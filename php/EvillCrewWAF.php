@@ -53,44 +53,45 @@ function logdata($data=''){
 //------------------------------------------------------------------------------
 function checkInData($data,$FILE=False){
 	global $MSGERRORWAF;
-	$patt = "~\/\.\.\/\.\.\/\.\.\/".
-	        "|{0-9a-zA-Z}[80]".
-	        "|eval[^\(]*\(".
-	        "|isset[^\(]*\(".
-	        "|assert[^\(]*\(".
-	        "|include[^\(]*\(".
-	        "|base64_decode[^\(]*\(".
-	        "|stripslashes[^\(]*\(".
-	        "|strip_tags[^\(]*\(".
-	        "|fopen[^\(]*\(".
-	        "|chmod[^\(]*\(".
-	        "|chown[^\(]*\(".
-	        "|chgrp[^\(]*\(".
-	        "|unlink[^\(]*\(".
-	        "|unset[^\(]*\(".
-	        "|fgetc[^\(]*\(".
-	        "|fgets[^\(]*\(".
-	        "|file_get_contents[^\(]*\(".
-	        "|file_put_contents[^\(]*\(".
-	        "|fwrite[^\(]*\(".
-	        "|move_uploaded_file[^\(]*\(".
-	        "|is_uploaded_file[^\(]*\(".
-	        "|rmdir[^\(]*\(".
-	        "|fromCharCode[^\(]*\(".
-	        "|tmpfile[^\(]*\(".
-	        "|tempnam[^\(]*\(".
-	        "|phpinfo[^\(]*\(".
-	        "|basename[^\(]*\(".
-	        "|curl_init[^\(]*\(".
-	        "|socket_create[^\(]*\(".
-	        "|popen[^\(]*\(".
-	        "|exec[^\(]*\(".
-	        "|system[^\(]*\(".
-	        "|passthru[^\(]*\(".
-	        "|proc_open[^\(]*\(".
-	        "|gzuncompress[^\(]*\(".
-	        "|shell_exec[^\(]*\(".
-	        "|\bselect\b|\border\b|\bunion\b|delete from|insert into~i";
+	$patt =
+		"~\/\.\.\/\.\.\/\.\.\/".
+		"|{0-9a-zA-Z}[80]".
+		"|eval[^\(]*\(".
+		"|isset[^\(]*\(".
+		"|assert[^\(]*\(".
+		"|include[^\(]*\(".
+		"|base64_decode[^\(]*\(".
+		"|stripslashes[^\(]*\(".
+		"|strip_tags[^\(]*\(".
+		"|fopen[^\(]*\(".
+		"|chmod[^\(]*\(".
+		"|chown[^\(]*\(".
+		"|chgrp[^\(]*\(".
+		"|unlink[^\(]*\(".
+		"|unset[^\(]*\(".
+		"|fgetc[^\(]*\(".
+		"|fgets[^\(]*\(".
+		"|file_get_contents[^\(]*\(".
+		"|file_put_contents[^\(]*\(".
+		"|fwrite[^\(]*\(".
+		"|move_uploaded_file[^\(]*\(".
+		"|is_uploaded_file[^\(]*\(".
+		"|rmdir[^\(]*\(".
+		"|fromCharCode[^\(]*\(".
+		"|tmpfile[^\(]*\(".
+		"|tempnam[^\(]*\(".
+		"|phpinfo[^\(]*\(".
+		"|basename[^\(]*\(".
+		"|curl_init[^\(]*\(".
+		"|socket_create[^\(]*\(".
+		"|popen[^\(]*\(".
+		"|exec[^\(]*\(".
+		"|system[^\(]*\(".
+		"|passthru[^\(]*\(".
+		"|proc_open[^\(]*\(".
+		"|gzuncompress[^\(]*\(".
+		"|shell_exec[^\(]*\(".
+		"|\bselect\b|\border\b|\bunion\b|delete from|insert into~i";
 
 //------------------------------------------------------------------------------
 	if($FILE){
