@@ -33,12 +33,12 @@ $MSGERRORWAF = "
 //------------------------------------------------------------------------------
 $checkDataArr = array($_REQUEST,
                       $_COOKIE,
-											$_SERVER['REQUEST_URI'],
-											$_SERVER['QUERY_STRING'],
-											$_SERVER['HTTP_USER_AGENT'],
-											$_SERVER['HTTP_X_FORWARDED_FOR'],
-											$_SERVER['HTTP_REFERER'],
-											"FILES"=>$_FILES);
+                      $_SERVER['REQUEST_URI'],
+                      $_SERVER['QUERY_STRING'],
+                      $_SERVER['HTTP_USER_AGENT'],
+                      $_SERVER['HTTP_X_FORWARDED_FOR'],
+                      $_SERVER['HTTP_REFERER'],
+                      "FILES"=>$_FILES);
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 function logdata($data=''){
