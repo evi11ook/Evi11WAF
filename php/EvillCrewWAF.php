@@ -55,57 +55,57 @@ function checkInData($data,$FILE=False){
 	global $MSGERRORWAF;
 	$patt = "~\/\.\.\/\.\.\/\.\.\/".
 	        "|{0-9a-zA-Z}[80]".
-					"|eval[^\(]*\(".
-					"|isset[^\(]*\(".
+	        "|eval[^\(]*\(".
+	        "|isset[^\(]*\(".
 	        "|assert[^\(]*\(".
-					"|include[^\(]*\(".
-					"|base64_decode[^\(]*\(".
-					"|stripslashes[^\(]*\(".
-					"|strip_tags[^\(]*\(".
-					"|fopen[^\(]*\(".
-					"|chmod[^\(]*\(".
-					"|chown[^\(]*\(".
-					"|chgrp[^\(]*\(".
-					"|unlink[^\(]*\(".
-					"|unset[^\(]*\(".
-					"|fgetc[^\(]*\(".
-					"|fgets[^\(]*\(".
-					"|file_get_contents[^\(]*\(".
-					"|file_put_contents[^\(]*\(".
-					"|fwrite[^\(]*\(".
-					"|move_uploaded_file[^\(]*\(".
-					"|is_uploaded_file[^\(]*\(".
-					"|rmdir[^\(]*\(".
-					"|fromCharCode[^\(]*\(".
-					"|tmpfile[^\(]*\(".
-					"|tempnam[^\(]*\(".
-					"|phpinfo[^\(]*\(".
-					"|basename[^\(]*\(".
-					"|curl_init[^\(]*\(".
-					"|socket_create[^\(]*\(".
-					"|popen[^\(]*\(".
-					"|exec[^\(]*\(".
-					"|system[^\(]*\(".
-					"|passthru[^\(]*\(".
-					"|proc_open[^\(]*\(".
-					"|gzuncompress[^\(]*\(".
-					"|shell_exec[^\(]*\(".
-					"|\bselect\b|\border\b|\bunion\b|delete from|insert into~i";
+	        "|include[^\(]*\(".
+	        "|base64_decode[^\(]*\(".
+	        "|stripslashes[^\(]*\(".
+	        "|strip_tags[^\(]*\(".
+	        "|fopen[^\(]*\(".
+	        "|chmod[^\(]*\(".
+	        "|chown[^\(]*\(".
+	        "|chgrp[^\(]*\(".
+	        "|unlink[^\(]*\(".
+	        "|unset[^\(]*\(".
+	        "|fgetc[^\(]*\(".
+	        "|fgets[^\(]*\(".
+	        "|file_get_contents[^\(]*\(".
+	        "|file_put_contents[^\(]*\(".
+	        "|fwrite[^\(]*\(".
+	        "|move_uploaded_file[^\(]*\(".
+	        "|is_uploaded_file[^\(]*\(".
+	        "|rmdir[^\(]*\(".
+	        "|fromCharCode[^\(]*\(".
+	        "|tmpfile[^\(]*\(".
+	        "|tempnam[^\(]*\(".
+	        "|phpinfo[^\(]*\(".
+	        "|basename[^\(]*\(".
+	        "|curl_init[^\(]*\(".
+	        "|socket_create[^\(]*\(".
+	        "|popen[^\(]*\(".
+	        "|exec[^\(]*\(".
+	        "|system[^\(]*\(".
+	        "|passthru[^\(]*\(".
+	        "|proc_open[^\(]*\(".
+	        "|gzuncompress[^\(]*\(".
+	        "|shell_exec[^\(]*\(".
+	        "|\bselect\b|\border\b|\bunion\b|delete from|insert into~i";
 
 //------------------------------------------------------------------------------
 	if($FILE){
 		if(is_array($data)){
 			foreach ($data as $key => $value){
 				if ($value['error'] < 1){
-					try{
-						if (file_exists($value['tmp_name'])){
-							if (preg_match($patt,mb_strtolower(file_get_contents($value['tmp_name'])))){
-								echo str_replace("{EVENTID}",'00001',$MSGERRORWAF);
-								logdata($value['tmp_name']);
-								exit();
-							}
-						}
-					} catch (Exceptio $e) { echo ""; }
+	        try{
+	        	if (file_exists($value['tmp_name'])){
+	        		if (preg_match($patt,mb_strtolower(file_get_contents($value['tmp_name'])))){
+	        			echo str_replace("{EVENTID}",'00001',$MSGERRORWAF);
+	        			logdata($value['tmp_name']);
+	        			exit();
+	        		}
+	        	}
+	        } catch (Exceptio $e) { echo ""; }
 				}
 			}
 		}
@@ -114,27 +114,27 @@ function checkInData($data,$FILE=False){
 	if(!$FILE){
 			if (is_array($data)){
 				foreach ($data as $key => $value) {
-					checkInData($value);
-					if($key == "FILES"){
-						checkInData($value,True);
-					}
+	        checkInData($value);
+	        if($key == "FILES"){
+	        	checkInData($value,True);
+	        }
 				}
 			}else{
 				try{
-					if ( preg_match($patt, mb_strtolower($data)) ||
-					     preg_match($patt, mb_strtolower(stripslashes($data)))) {
-						echo str_replace("{EVENTID}",'00002',$MSGERRORWAF);
-						logdata($data);
-						exit();
-					}
+	        if ( preg_match($patt, mb_strtolower($data)) ||
+	             preg_match($patt, mb_strtolower(stripslashes($data)))) {
+	        	echo str_replace("{EVENTID}",'00002',$MSGERRORWAF);
+	        	logdata($data);
+	        	exit();
+	        }
 				} catch (Exception $e) { echo "";}
 				try{
-					if ( preg_match($patt, mb_strtolower(base64_decode($data))) ||
-					     preg_match($patt, mb_strtolower(stripslashes(base64_decode($data))))){
-						echo str_replace("{EVENTID}",'00003',$MSGERRORWAF);
-						logdata($data);
-						exit();
-					}
+	        if ( preg_match($patt, mb_strtolower(base64_decode($data))) ||
+	             preg_match($patt, mb_strtolower(stripslashes(base64_decode($data))))){
+	        	echo str_replace("{EVENTID}",'00003',$MSGERRORWAF);
+	        	logdata($data);
+	        	exit();
+	        }
 				} catch (Exception $e) {echo "";}
 			}
 		}
