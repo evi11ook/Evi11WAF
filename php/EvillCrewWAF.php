@@ -20,13 +20,13 @@ $MSGERRORWAF = "
   </head>
   <body>
    <H2>Внимание</H2><br>
-			Ваш запрос к web приложению не может быть выполнен в связи с нарушением политик безопасности. <br>
-			Свяжитесь с службой поддержки для получения дополнительной информации.<br>
-			Event id: {EVENTID}<br><br><br>
+		Ваш запрос к web приложению не может быть выполнен в связи с нарушением политик безопасности. <br>
+		Свяжитесь с службой поддержки для получения дополнительной информации.<br>
+		Event id: {EVENTID}<br><br><br>
    <H2>ATTENITON</H2><br>
-			Your request to the web application can't be executed due to violation of security policies. <br>
-			Contact support for more information.<br>
-			Event id: {EVENTID}<br>
+		Your request to the web application can't be executed due to violation of security policies. <br>
+		Contact support for more information.<br>
+		Event id: {EVENTID}<br>
   </body>
  </html>
 ";
