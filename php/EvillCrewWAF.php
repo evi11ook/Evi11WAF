@@ -97,15 +97,15 @@ function checkInData($data,$FILE=False){
 		if(is_array($data)){
 			foreach ($data as $key => $value){
 				if ($value['error'] < 1){
-	        try{
-	        	if (file_exists($value['tmp_name'])){
-	        		if (preg_match($patt,mb_strtolower(file_get_contents($value['tmp_name'])))){
-	        			echo str_replace("{EVENTID}",'00001',$MSGERRORWAF);
-	        			logdata($value['tmp_name']);
-	        			exit();
-	        		}
-	        	}
-	        } catch (Exceptio $e) { echo ""; }
+					try{
+						if (file_exists($value['tmp_name'])){
+							if (preg_match($patt,mb_strtolower(file_get_contents($value['tmp_name'])))){
+								echo str_replace("{EVENTID}",'00001',$MSGERRORWAF);
+								logdata($value['tmp_name']);
+								exit();
+							}
+						}
+					} catch (Exceptio $e) { echo ""; }
 				}
 			}
 		}
@@ -114,27 +114,27 @@ function checkInData($data,$FILE=False){
 	if(!$FILE){
 			if (is_array($data)){
 				foreach ($data as $key => $value) {
-	        checkInData($value);
-	        if($key == "FILES"){
-	        	checkInData($value,True);
-	        }
+					checkInData($value);
+					if($key == "FILES"){
+						checkInData($value,True);
+					}
 				}
 			}else{
 				try{
-	        if ( preg_match($patt, mb_strtolower($data)) ||
-	             preg_match($patt, mb_strtolower(stripslashes($data)))) {
-	        	echo str_replace("{EVENTID}",'00002',$MSGERRORWAF);
-	        	logdata($data);
-	        	exit();
-	        }
+					if ( preg_match($patt, mb_strtolower($data)) ||
+					     preg_match($patt, mb_strtolower(stripslashes($data)))) {
+						echo str_replace("{EVENTID}",'00002',$MSGERRORWAF);
+						logdata($data);
+						exit();
+					}
 				} catch (Exception $e) { echo "";}
 				try{
-	        if ( preg_match($patt, mb_strtolower(base64_decode($data))) ||
-	             preg_match($patt, mb_strtolower(stripslashes(base64_decode($data))))){
-	        	echo str_replace("{EVENTID}",'00003',$MSGERRORWAF);
-	        	logdata($data);
-	        	exit();
-	        }
+					if ( preg_match($patt, mb_strtolower(base64_decode($data))) ||
+					     preg_match($patt, mb_strtolower(stripslashes(base64_decode($data))))){
+						echo str_replace("{EVENTID}",'00003',$MSGERRORWAF);
+						logdata($data);
+						exit();
+					}
 				} catch (Exception $e) {echo "";}
 			}
 		}
