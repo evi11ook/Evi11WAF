@@ -53,8 +53,7 @@ function logdata($data=''){
 //------------------------------------------------------------------------------
 function checkInData($data,$FILE=False){
 	global $MSGERRORWAF;
-	$patt =
-		"~\/\.\.\/\.\.\/\.\.\/".
+	$patt = "~\/\.\.\/\.\.\/\.\.\/".
 		"|{0-9a-zA-Z}[80]".
 		"|eval[^\(]*\(".
 		"|isset[^\(]*\(".
